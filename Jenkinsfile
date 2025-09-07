@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build Java App') {
             steps {
-                sh 'mvnw clean package'
+                sh 'mvn clean package'
             }
         }
 
