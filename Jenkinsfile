@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Build Java App') {
             steps {
-                sh 'mvn clean package'
+                dir('todo-app') {
+                    sh 'mvn clean package'
+                }
             }
         }
 
