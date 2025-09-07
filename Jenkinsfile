@@ -6,10 +6,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // First, wipe the workspace clean
+                // Clean the workspace first
                 cleanWs()
-                // Then, check out the code from the Git repo configured in the job
-                checkout scm
+                // Checkout the code using the specific git command
+                git branch: 'main', url: 'https://github.com/onkar-sopho/todo-app.git'
             }
         }
         stage('Build Java App') {
