@@ -1,15 +1,11 @@
 pipeline {
-    agent any
-    tools {
-        maven 'Maven3'
+    agent {
+        docker {
+            image 'maven:3-eclipse-temurin-17'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
     }
     stages {
-        stage('Checkout') {
-            steps {
-                cleanWs()
-                git branch: 'main', url: 'https://github.com/onkar-sopho/todo-app.git'
-            }
-        }
         stage('Build and Package') {
             steps {
                 sh 'mvn clean package'
