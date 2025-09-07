@@ -2,9 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Java App') {
             steps {
-                echo 'Hello from Jenkins!'
+                sh 'mvnw clean package'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t whitewolf799/todo-app'
             }
         }
     }
